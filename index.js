@@ -1,6 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 import dotenv from 'dotenv';
+import cors from "cors";
+
 import {
     dirname
 } from "path";
@@ -15,6 +17,8 @@ import {
 import {
     co2
 } from "@tgwf/co2";
+
+
 
 dotenv.config();
 
@@ -34,6 +38,7 @@ const carbon_API_KEY = process.env.CARBON_API_KEY;
 
 
 // Middlewares for allowing access to CSS/JS files and body of request
+app.use(cors())
 app.use(express.static(__dirname + '/Public'));
 app.use(bodyParser.urlencoded({
     extended: true
